@@ -3,14 +3,14 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 1443
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["MvcMovie/MvcMovie.csproj", "MvcMovie/"]
+COPY ["MvcMovie.csproj", "MvcMovie/"]
 RUN dotnet restore "MvcMovie/MvcMovie.csproj"
-COPY . .
 WORKDIR "/src/MvcMovie"
+COPY . .
 RUN dotnet build "MvcMovie.csproj" -c Release -o /app/build
 
 FROM build AS publish
