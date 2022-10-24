@@ -14,6 +14,8 @@ namespace MvcMovie.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<MvcMovieContext>>()))
             {
+                context.Database.Migrate();
+
                 // Look for any movies.
                 if (context.Movie.Any())
                 {
