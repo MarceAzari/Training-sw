@@ -5,8 +5,8 @@ services:
         depends_on:
             - sql.data
         build:
-            context: .
-            dockerfile: Dockerfile
+            context: . 
+            dockerfile: MvcMovie/Dockerfile
         environment:
           - ASPNETCORE_ENVIRONMENT=Development
           - ConnectionStrings__MvcMovieContext=Data Source=sql.data;Initial Catalog=MvcMovie;User ID=sa;Password=Passw0rd;
